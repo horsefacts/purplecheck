@@ -57,6 +57,12 @@ contract PurplecheckTest is Test {
         assertEq(purplecheck.totalSupply(), 3);
     }
 
+    function test_reverts_on_underpayment() public {
+        vm.expectRevert("UNDERPAID");
+        vm.prank(alice);
+        purplecheck.mint{value: 0}(CID);
+    }
+
     function test_price_increases() public {
         assertEq(purplecheck.price(), 4432048402018610);
 
