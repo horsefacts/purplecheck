@@ -16,8 +16,6 @@ import {Metadata} from "./Metadata.sol";
 /// per day at a price of 0.00420 ETH.
 /// @author horsefacts <horsefacts@terminally.online>
 contract Purplecheck is ERC721, LinearVRGDA, Owned {
-    event PermanentURI(string _value, uint256 indexed _id);
-
     /// @notice Total number of Purplecheck tokens.
     uint256 public totalSupply;
 
@@ -76,9 +74,6 @@ contract Purplecheck is ERC721, LinearVRGDA, Owned {
 
             // Mint token to caller
             _mint(msg.sender, tokenId);
-
-            // Freeze metadata
-            emit PermanentURI(_cid, tokenId);
 
             // Refund excess payment to caller
             if (msg.value != _price) SafeTransferLib.safeTransferETH(msg.sender, msg.value - _price);
