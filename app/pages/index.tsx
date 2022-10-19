@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { useAccount } from 'wagmi';
 
 import Connect from '../components/Connect';
+import ContractInfo from '../components/ContractInfo';
 import Mint from '../components/Mint';
 import Success from '../components/Success';
 import Upload from '../components/Upload';
@@ -50,6 +51,7 @@ const Home: NextPage = () => {
               <p className="italic tracking-tight">
                 Your JPEGs deserve to feel special
               </p>
+              <ContractInfo />
             </div>
             <Connect />
             {success ? (
@@ -63,7 +65,6 @@ const Home: NextPage = () => {
             )}
             <Mint cid={cid} onMintSuccess={onMintSuccess} />
           </main>
-          <footer></footer>
         </div>
       )}
     </div>

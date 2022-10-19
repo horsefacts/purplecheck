@@ -44,7 +44,7 @@ function Upload({ enabled, onUploadComplete, onError }: UploadProps) {
   const border = enabled ? "border-violet-600" : "border-neutral-400";
 
   return (
-    <div>
+    <div className="relative">
       <FileUploader
         handleChange={handleChange}
         name="file"
