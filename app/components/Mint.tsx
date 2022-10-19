@@ -1,7 +1,10 @@
 import { Abi } from 'abitype';
 import React, { useState } from 'react';
-import { useContractWrite, usePrepareContractWrite, useWaitForTransaction } from 'wagmi';
+import {
+    useContractWrite, useNetwork, usePrepareContractWrite, useWaitForTransaction
+} from 'wagmi';
 
+import { getContract } from '../config/contracts';
 import { usePrice } from '../hooks/contracts';
 
 interface MintProps {
@@ -14,10 +17,11 @@ interface WagmiError {
 }
 
 function Mint({ cid, onMintSuccess }: MintProps) {
+  const { chain } = useNetwork();
   const [success, setSuccess] = useState<boolean>();
   const { price, roundedPrice, isError, isLoading } = usePrice();
   const { config } = usePrepareContractWrite({
-    address: "0xbF7520551af5d9CD58EBA3D152e00A506E1f81C3",
+    address: getContract(chain),
     abi: [
       {
         inputs: [

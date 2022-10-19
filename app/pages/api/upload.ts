@@ -4,7 +4,7 @@ import fs from 'fs';
 import mime from 'mime';
 import { Blob, NFTStorage } from 'nft.storage';
 
-const NFT_STORAGE_KEY = process.env.NEXT_NFT_STORAGE_API_KEY;
+const NFT_STORAGE_KEY = process.env.NEXT_NFT_STORAGE_API_KEY || "";
 
 export const config = {
     api: {
