@@ -1,7 +1,7 @@
+import { Abi } from 'abitype';
 import React, { useState } from 'react';
 import { useContractWrite, usePrepareContractWrite, useWaitForTransaction } from 'wagmi';
 
-import purplecheckABI from '../config/abis/purplecheck.json';
 import { usePrice } from '../hooks/contracts';
 
 interface MintProps {
@@ -18,12 +18,32 @@ function Mint({ cid, onMintSuccess }: MintProps) {
   const { price, roundedPrice, isError, isLoading } = usePrice();
   const { config } = usePrepareContractWrite({
     address: "0xbF7520551af5d9CD58EBA3D152e00A506E1f81C3",
-    abi: purplecheckABI,
+    abi: [
+      {
+        inputs: [
+          {
+            internalType: "string",
+            name: "_cid",
+            type: "string",
+          },
+        ],
+        name: "mint",
+        outputs: [
+          {
+            internalType: "uint256",
+            name: "tokenId",
+            type: "uint256",
+          },
+        ],
+        stateMutability: "payable",
+        type: "function",
+      },
+    ],
     functionName: "mint",
+    args: [cid || ""],
     overrides: {
       value: price,
     },
-    args: [cid],
   });
   const {
     write: mint,
