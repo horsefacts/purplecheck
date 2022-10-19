@@ -104,6 +104,16 @@ contract PurplecheckTest is Test {
         assertEq(purplecheck.price(), 4455946984192507);
     }
 
+    function test_one_hundred_mints() public {
+        deal(alice, 100 ether);
+        vm.startPrank(alice);
+        for (uint256 i; i<100; ++i) {
+          purplecheck.mint{value: purplecheck.price()}(CID);
+        }
+        vm.stopPrank();
+        assertEq(purplecheck.price(), 959676629387490517);
+    }
+
     function test_price_decreases() public {
         vm.warp(block.timestamp + 10 days);
         assertEq(purplecheck.price(), 108416504775523);
