@@ -58,7 +58,7 @@ function Success({ txHash, objectURI }: SuccessProps) {
               config={{
                 angle: 90,
                 spread: 420,
-                elementCount: 69,
+                elementCount: 100,
                 duration: 3500,
                 width: "10px",
                 height: "10px",

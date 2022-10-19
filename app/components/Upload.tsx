@@ -60,6 +60,7 @@ function Upload({ enabled, onUploadComplete, onError }: UploadProps) {
         <FileUploader
           handleChange={handleChange}
           name="file"
+          hoverTitle=" "
           types={fileTypes}
           disabled={!enabled}
         >
