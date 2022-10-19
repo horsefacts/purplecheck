@@ -39,6 +39,7 @@ const Home: NextPage = () => {
         <div>
           <Head>
             <title>purplecheck</title>
+            <link rel="shortcut icon" href="/favicon.svg" />
           </Head>
           <main className="p-16 space-y-4 max-w-screen-xl mx-auto">
             <div>
